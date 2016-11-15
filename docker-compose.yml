@@ -1,0 +1,13 @@
+version: '2'
+services:
+  mongo:
+    image: mongo
+  event-service:
+    build: .
+    command: java -jar /docker/event.jar
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8011:8080"
+    depends_on:
+      - mongo

@@ -1,0 +1,25 @@
+server:
+  port: 8011
+---
+spring:
+    profiles: production
+server:
+    port: 80
+---
+spring:
+    profiles: development
+server:
+    port: 8011
+---
+spring:
+    profiles: test
+server:
+    port: 9090
+---
+spring:
+    profiles: docker
+    data:
+      mongodb:
+        host: mongo
+server:
+    port: 8080
