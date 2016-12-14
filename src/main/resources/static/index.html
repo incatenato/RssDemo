@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="zh-CN" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="zh-CN"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="UTF-8" />
+    <title>System login</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="login">
+<!-- BEGIN LOGO -->
+<div class="logo">
+</div>
+<!-- END LOGO -->
+<!-- BEGIN LOGIN -->
+<div class="content">
+    <!-- BEGIN LOGIN FORM -->
+    <h3 class="form-title">RSS fetcher.</h3>
+    <div class="control-group">
+        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <label class="control-label visible-ie8 visible-ie9">RSS source:</label>
+        <div class="controls">
+            <div class="input-icon left">
+                <i class="icon-user"></i>
+                <input class="m-wrap placeholder-no-fix" placeholder="RSS source" type="text" id="rss"/>
+            </div>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label visible-ie8 visible-ie9">Keyword:</label>
+        <div class="controls">
+            <div class="input-icon left">
+                <i class="icon-lock"></i>
+                <input class="m-wrap placeholder-no-fix" placeholder="Keyword" type="text" id="keyword"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="button" class="btn green pull-right" onclick="fetch()">fetch!</button>
+    </div>
+
+    <div id="result">
+        <!-- display -->
+    </div>
+
+</div>
+<!-- END COPYRIGHT -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<script src="jquery-1.10.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function fetch(){
+        var url = $("#rss").val();
+        var keyword = $("#keyword").val();
+        $.get( "http://localhost:8011/rss?url="+url+"&keyword="+keyword, function( data ) {
+            $( "#result" ).html(data[0].description);
+        });
+    }
+</script>
+</body>
+<!-- END BODY -->
+</html>

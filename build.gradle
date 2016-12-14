@@ -30,6 +30,9 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	compile group: 'org.jsoup', name: 'jsoup', version: '1.10.1'
+	// https://mvnrepository.com/artifact/rome/rome
+	compile group: 'rome', name: 'rome', version: '1.0'
 	compile('org.springframework.data:spring-data-rest-hal-browser')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
